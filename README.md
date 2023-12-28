@@ -1,4 +1,4 @@
-****Laravel Backend Documentation********
+    ****Laravel Backend Documentation****
 
 **Overview**
 
@@ -6,10 +6,11 @@ This Laravel backend serves as the backend component for a library management sy
 **Installation**
 
 **1. Clone the repository**
-  	 git clone https://github.com/keith-owira/eLibraryMgmt.git 
+
+  	git clone https://github.com/keith-owira/eLibraryMgmt.git 
 
 **2. Install dependencies:**
- 	    composer install
+     composer install
 
 3. Copy `.env.example` to `.env` and configure your environment variables.
 
