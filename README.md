@@ -1,22 +1,22 @@
+****Laravel Backend Documentation********
 
-    ##Laravel Backend Documentation
-Overview
+**Overview**
 
 This Laravel backend serves as the backend component for a library management system. It includes CRUD REST APIs for managing users, books, and book loans.
-Installation
+**Installation**
 
-1. Clone the repository
+**1. Clone the repository**
   	 git clone https://github.com/keith-owira/eLibraryMgmt.git 
 
-2. Install dependencies:
- 	  composer install
+**2. Install dependencies:**
+ 	    composer install
 
 3. Copy `.env.example` to `.env` and configure your environment variables.
 
-4. Generate application key:
+**4. Generate application key:**
   	 php artisan key:generate
 
-Database Setup
+****Database Setup****
 
 1. Create a MySQL database.
 
@@ -34,9 +34,10 @@ Database Setup
 3. Run migrations and seed the database:
    php artisan migrate --seed
 API Documentation
+The api Documentation is accesible via https://documenter.getpostman.com/view/16144750/2s9YkuZdZ7#intro the link.
 
 
-Authentication
+**Authentication**
 
 The application uses Laravel Sanctum for API authentication. 
 
