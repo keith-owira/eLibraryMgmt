@@ -1,4 +1,4 @@
-    ****Laravel Backend Documentation****
+****Laravel Backend Documentation****
 
 **Overview**
 
@@ -10,11 +10,13 @@ This Laravel backend serves as the backend component for a library management sy
   	git clone https://github.com/keith-owira/eLibraryMgmt.git 
 
 **2. Install dependencies:**
+
      composer install
 
 3. Copy `.env.example` to `.env` and configure your environment variables.
 
 **4. Generate application key:**
+
   	 php artisan key:generate
 
 ****Database Setup****
@@ -33,7 +35,9 @@ This Laravel backend serves as the backend component for a library management sy
    ```
 
 3. Run migrations and seed the database:
-   php artisan migrate --seed
+   
+       php artisan migrate --seed
+
 API Documentation
 The api Documentation is accesible via https://documenter.getpostman.com/view/16144750/2s9YkuZdZ7#intro the link.
 
@@ -55,4 +59,3 @@ Admin Should approve the loan request
 Admin should issue the book to the user
 Users should be able to extend the book loan if they cannot return it within the specified return date.
 User to get a reminder of when the book is due
-
