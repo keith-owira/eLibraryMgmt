@@ -87,39 +87,49 @@ class BooksLoansController extends Controller
 //        return response()->json($data);
 //    }
 
-    public function getLoanDetails(Request $request)
+    public function getLoanDetails($loanId)
     {
-        $input = $request->validate([
-            'search_term' => 'required|string',
-            'search_by' => 'required|in:book_name,user_name'
-        ]);
+        $loan = Books_loans::with(['user', 'book'])
+            ->where('id', $loanId)
+            ->first();
 
-        $loanDetails = null;
-
-        if ($input['search_by'] === 'book_name') {
-            // Search by book name
-            $book = Books::where('name', $input['search_term'])->first();
-
-            if ($book) {
-                $loanDetails = Books_loans::where('book_id', $book->id)->first();
-            }
-        } else {
-            // Search by user name
-            $user = User::where('name', $input['search_term'])->first();
-
-            if ($user) {
-                $loanDetails = Books_loans::where('user_id', $user->id)->first();
-            }
+        if (!$loan) {
+            return response()->json(['error' => 'Loan not found'], 404);
         }
 
-        if ($loanDetails) {
-            $loanDetails = $loanDetails->load('user', 'book');
-            // Retrieve user name and book name
-            $loanDetails['user_name'] = $loanDetails->user->name;
-            $loanDetails['book_name'] = $loanDetails->book->name;
-        }
+        $loanDetails = [
+            'user_name' => $loan->user->name,
+            'book_name' => $loan->book->name,
+            'due_date' => $loan->due_date,
+            'status' => $loan->status,
+            // Add other fields as needed
+        ];
 
         return response()->json($loanDetails);
     }
+    public function getAllLoanDetails()
+    {
+        $loans = Books_loans::with(['user', 'book'])
+            ->get();
+
+//        dd($loans);
+
+        if ($loans->isEmpty()) {
+            return response()->json(['error' => 'No loans found'], 404);
+        }
+
+        $loanDetails = $loans->map(function ($loan) {
+            return [
+                'user_name' => $loan->user->name,
+                'book_name' => $loan->book->name,
+                'due_date' => $loan->due_date,
+                'status' => $loan->status,
+                // Add other fields as needed
+            ];
+        });
+
+        return response()->json($loanDetails);
+    }
+
 
 }

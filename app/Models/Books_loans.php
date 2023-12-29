@@ -22,4 +22,14 @@ class Books_loans extends Model
         'status',
         'added_by',
     ];
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function book()
+    {
+        return $this->belongsTo(Books::class, 'book_id');
+    }
+
 }

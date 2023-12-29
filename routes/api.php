@@ -35,7 +35,9 @@ Route::get ('/books/{id}',[BooksController::class,'show']);
 Route::get ('/bookloans',[BooksLoansController::class,'index']);
 Route::get('/bookloans/search/{name}', [BooksLoansController::class,'search']);
 Route::get ('/bookloans/{id}',[BooksLoansController::class,'show']);
-Route::get('/bookloans/loan-details', [BooksLoansController::class, 'getLoanDetails']);
+Route::get('/bookloans/loan-detail/{id}', [BooksLoansController::class, 'getLoanDetails']);
+Route::get('/bookloans/loan-details/{id}', [BooksLoansController::class, 'getAllLoanDetails']);
+
 
 //Route::resource('books',BooksController::class);
 //Route::resource('bookscontroller', BooksController::class);

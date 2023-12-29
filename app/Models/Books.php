@@ -20,4 +20,8 @@ class Books extends Model
         'image',
         'added_by'
     ];
+    public function bookLoans()
+    {
+        return $this->hasMany(BookLoan::class);
+    }
 }
